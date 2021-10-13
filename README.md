@@ -15,5 +15,7 @@ TODO:
 
 
 venv install:
+
 conda activate moshack
+
 ipython kernel install --name "moshack" --user
