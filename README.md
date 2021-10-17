@@ -13,6 +13,7 @@ TODO:
  - не выделать если школа, орден, медаль и тп
  - проверить thresshold при определение. текста в рамках в ocr
  - попробовать другие алгоритмы ocr
+ - при распознавании картинки "нормализовать ее" (функции из https://nanonets.com/blog/ocr-with-tesseract/)
 
 venv :
 conda activate moshack
