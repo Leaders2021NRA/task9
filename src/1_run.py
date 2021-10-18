@@ -21,7 +21,7 @@ if __name__ == '__main__':
     processed_ = 0
     for file_path in all_files_paths:
         try:
-            output_dir = os.path.join(WORK_DIR, file_path.rsplit('/', 1)[1].rsplit('.', 1)[0])
+            output_dir = os.path.join(WORK_DIR, os.path.basename(file_path))
             os.mkdir(output_dir)
             runner.process(file_path, output_dir)
             processed_ += 1
