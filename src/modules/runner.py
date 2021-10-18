@@ -69,7 +69,7 @@ class Runner:
             # iterate over boxes and mark PER with red, other with green
             n_boxes = len(ocr_result['text'])
             for i in range(n_boxes):
-                if int(ocr_result['conf'][i]) > 0: # TODO check threshold
+                if int(float(ocr_result['conf'][i])) > 0: # TODO check threshold
                     (x, y, w, h) = (ocr_result['left'][i], 
                                     ocr_result['top'][i], 
                                     ocr_result['width'][i], 
