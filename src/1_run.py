@@ -12,7 +12,7 @@ if __name__ == '__main__':
         if os.path.isfile(x)
     ]
 
-    WORK_DIR = f'../data/result_{datetime.datetime.now().strftime("%d%m%Y_%H%m%s")}'
+    WORK_DIR = '../data/result_{}'.format(datetime.datetime.now().strftime('%Y%m%d%H%M%S'))
     os.mkdir(WORK_DIR)
 
     runner = Runner()
