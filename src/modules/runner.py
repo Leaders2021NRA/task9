@@ -14,7 +14,7 @@ class Runner:
         self.ocr = OCR()
         self.person_extractor = PersonExtractor()
 
-    def process(self, input_file_path, ouput_dir_path):
+    def process(self, input_file_path, ouput_dir_path, blur=False):
         
         # convert input file to jpeg
         self.jpeg_converter.convert(input_file_path, ouput_dir_path)
@@ -65,8 +65,14 @@ class Runner:
                 for k in range(i, j+1):
                     if k in text_combined_position2box_number:
                         boxes_num_to_show.add(text_combined_position2box_number[k])
-
-            # iterate over boxes and mark PER with red, other with green
+            
+            # prepare some data for blurring
+            if blur:
+                h, w = img.shape[:2]
+                kernel_width = (w // 7) | 1
+                kernel_height = (h // 7) | 1            
+                        
+            # iterate over boxes and mark PER with red, other with green or blur
             n_boxes = len(ocr_result['text'])
             for i in range(n_boxes):
                 if int(float(ocr_result['conf'][i])) > 0: # TODO check threshold
@@ -74,14 +80,19 @@ class Runner:
                                     ocr_result['top'][i], 
                                     ocr_result['width'][i], 
                                     ocr_result['height'][i])
+                    # if not blur - we add red and green boxes around PER
+                    if not blur:
+                        if i in boxes_num_to_show:
+                            c = (0, 0, 255)
+                        else:
+                            c = (0, 255, 0)
 
-                    if i in boxes_num_to_show:
-                        c = (0, 0, 255)
+                        img = cv2.rectangle(img, (x, y), (x + w, y + h), c, 2)
                     else:
-                        c = (0, 255, 0)
-
-                    img = cv2.rectangle(img, (x, y), (x + w, y + h), c, 2)
-
+                        if i in boxes_num_to_show:
+                            box = img[y: y+h, x: x+w]
+                            box = cv2.GaussianBlur(box, (kernel_width, kernel_height), 0)
+                            img[y: y+h, x: x+w] = box
 
             # save reult in the same dir
             output_file = os.path.join(ouput_dir_path, f'{file.rsplit(".", 1)[0]}_res.jpg')
