@@ -17,6 +17,9 @@ class Runner:
 
     def process(self, input_file_path, ouput_dir_path, blur=False):
         
+        input_file_path = os.path.abspath(input_file_path)
+        ouput_dir_path = os.path.abspath(ouput_dir_path)
+        
         # convert input file to jpeg
         self.jpeg_converter.convert(input_file_path, ouput_dir_path)
         
@@ -24,6 +27,8 @@ class Runner:
         
         # iterate over jpegs (1 jpg - 1 page in file)
         for file in os.listdir(ouput_dir_path):
+            if not file.endswith('jpg'):
+                continue
             file_path = os.path.join(ouput_dir_path, file)
             
             # read image
