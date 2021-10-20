@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <title>Task9</title>
+</head>
+<body>
+     <style>
+          body {
+               font-family: Calibri;
+               font-size: 14pt;
+               margin: 10px;
+          }
+
+          #upload-container {
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               flex-direction: column;
+               width: 400px;
+               height: 200px;
+               outline: 2px dashed #5d5d5d;
+               outline-offset: -12px;
+               background-color: #e0f2f7;
+               font-family: 'Segoe UI';
+               color: #1f3c44;
+               margin: 0 auto;
+          }
+
+          #upload-container input[type=file] {
+               margin: 0 auto;
+               width: 0.1px;
+               height: 0.1px;
+               opacity: 0;
+               z-index: -10;
+          }
+
+          h2 {
+               color: white;
+               text-align: center;
+               background-color: darkred;
+               box-sizing: border-box;
+               border: 2px darkred;
+               border-radius: 4px;
+               outline: none;
+          }
+     </style> 
+     <h2> Удаление персональных данных </h2> 
+     <form action="" id="upload-container" method=post enctype=multipart/form-data>
+          <input id="file-input" type="file" name="file">
+          <label for="file-input">Выберите файл или перетащите его сюда</label>
+     </form>
+     <script type="text/javascript">
+          document.getElementById("file-input").onchange = function() {
+               document.getElementById("upload-container").submit();
+          };
+     </script>
+</body>
+</html>
