@@ -3,6 +3,7 @@ import os
 import datetime
 import re
 from matplotlib import pyplot as plt
+from zipfile import ZipFile, ZIP_DEFLATED
 
 from .ner import PersonExtractor
 from .ocr import OCR
@@ -18,6 +19,8 @@ class Runner:
         
         # convert input file to jpeg
         self.jpeg_converter.convert(input_file_path, ouput_dir_path)
+        
+        res_files = []
         
         # iterate over jpegs (1 jpg - 1 page in file)
         for file in os.listdir(ouput_dir_path):
@@ -97,3 +100,12 @@ class Runner:
             # save reult in the same dir
             output_file = os.path.join(ouput_dir_path, f'{file.rsplit(".", 1)[0]}_res.jpg')
             cv2.imwrite(output_file, img)
+            res_files.append(output_file)
+            
+        # create zip
+        zip_path = os.path.join(ouput_dir_path, 'result.zip')
+        with ZipFile(os.path.abspath(zip_path), 'w', ZIP_DEFLATED) as zip_file:
+            for file in res_files: 
+                zip_file.write(os.path.abspath(file), os.path.basename(file))
+
+        return res_files, zip_path
