@@ -1,0 +1,44 @@
+name: moshack
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pandas
+  - scikit-learn
+  - pip:
+    - argcomplete==1.10.3
+    - beautifulsoup4==4.8.2
+    - compressed-rtf==1.0.6
+    - dawg-python==0.7.2
+    - dill==0.3.4
+    - docopt==0.6.2
+    - docx2txt==0.8
+    - ebcdic==1.1.1
+    - ebooklib==0.17.1
+    - extract-msg==0.28.7
+    - imapclient==2.1.0
+    - importlib-resources==5.2.2
+    - ipymarkup==0.9.0
+    - multiprocess==0.70.12.2
+    - natasha==1.4.0
+    - navec==0.10.0
+    - nerus==1.7.0
+    - ocrusrex==0.2.2
+    - opencv-python==4.5.3.56
+    - pdf2image==1.16.0
+    - pdfminer-six==20191110
+    - pycryptodome==3.11.0
+    - pymorphy2==0.9.1
+    - pymorphy2-dicts-ru==2.4.417127.4579844
+    - pypdf2==1.26.0
+    - pytesseract==0.3.8
+    - python-levenshtein==0.12.2
+    - python-pptx==0.6.21
+    - razdel==0.5.0
+    - six==1.12.0
+    - slovnet==0.5.0
+    - speechrecognition==3.8.1
+    - textract==1.6.4
+    - tika==1.24
+    - tzlocal==3.0
+    - yargy==0.15.0
