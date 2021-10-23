@@ -20,7 +20,7 @@ conda install matplotlib pdf2image pandas numpy scikit-learn tqdm opencv-python 
 ipython kernel install --name "moshack" --user
 ```
 
-TODO (внутренне):
+TODO (внутреннее):
  - сделать отдельный перевод в jpg и запускать сразу на jpg (постоянный перевод всего датасета занимает много времени)
  - работа с таблицами сейчас не айс - надо думать как это исправить https://levelup.gitconnected.com/text-extraction-from-a-table-image-using-pytesseract-and-opencv-3342870691ae
  - не выделать если школа, орден, медаль и тп
