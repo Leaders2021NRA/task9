@@ -10,15 +10,15 @@ MVP содержит:
 
 
 Для работы сервиса рекомендуется поставить виртуальное окружение:
-
+```
 conda create -n moshack python=3.6
 conda install matplotlib pdf2image pandas numpy scikit-learn tqdm opencv-python pytesseract natasha
-
+```
 
 Установить окружение в jupyter notebook:
-
+```
 ipython kernel install --name "moshack" --user
-
+```
 
 TODO (внутренне):
  - сделать отдельный перевод в jpg и запускать сразу на jpg (постоянный перевод всего датасета занимает много времени)
