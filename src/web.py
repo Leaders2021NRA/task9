@@ -24,6 +24,7 @@ def upload_file():
 
 @app.route('/', methods=['POST'])
 def main_page():
+    #we shell use abs path ton relative! it break lauching script from other directory
     WORK_DIR = '../data/result_{}'.format(datetime.datetime.now().strftime('%Y%m%d%H%M%S'))
     os.makedirs(WORK_DIR)
     if 'file' not in request.files:
