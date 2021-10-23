@@ -2,7 +2,7 @@ import cv2
 import os
 import datetime
 import re
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 from zipfile import ZipFile, ZIP_DEFLATED
 
 from .ner import PersonExtractor
