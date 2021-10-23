@@ -11,9 +11,12 @@ class XToJPEG:
         #self.app_word  = comtypes.client.CreateObject('Word.Application')
         #self.app_word.Visible = False
         
+        pass
+        
     def __del__(self):
         #self.app_excel.Quit()
         #self.app_word.Quit()
+        pass
     
     def convert(self, file_path, output_dir):
         file_path_with_no_extension, file_extension = os.path.splitext(file_path)
