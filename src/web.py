@@ -25,8 +25,9 @@ def upload_file():
 @app.route('/', methods=['POST'])
 def main_page():
     #we shell use abs path ton relative! it break lauching script from other directory
-    WORK_DIR = '../data/result_{}'.format(datetime.datetime.now().strftime('%Y%m%d%H%M%S'))
+    WORK_DIR = 'data/result_{}'.format(datetime.datetime.now().strftime('%Y%m%d%H%M%S'))
     os.makedirs(WORK_DIR)
+    app.config['WORK_DIR'] = WORK_DIR
     if 'file' not in request.files:
         flash('No file part')
         return redirect(request.url)
@@ -67,6 +68,16 @@ def upload_file_post():
 @app.route('/processed/', methods=['GET'])
 def upload_file_get():
     return render_template('processed.html')
+
+@app.route("/back/", methods=['POST'])
+def move_back():
+    for root, dirs, files in os.walk(app.config['WORK_DIR'], topdown=False):
+        for name in files:
+            os.remove(os.path.join(root, name))
+        for name in dirs:
+            os.rmdir(os.path.join(root, name))
+    os.rmdir(app.config['WORK_DIR'])
+    return render_template('initial.html')
 
 
 if __name__=='__main__': 
