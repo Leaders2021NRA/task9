@@ -17,6 +17,7 @@ def allowed_file(filename):
 # ------------------------------------- RUN APP -------------------------------------------------
 app = Flask(__name__)
 app.config['PATH_TO_ZIP'] = None
+app.config['SECRET_KEY'] = '12345'
 
 @app.route('/', methods=['GET'])
 def upload_file():
