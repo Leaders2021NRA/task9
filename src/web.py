@@ -36,7 +36,7 @@ def main_page():
     # empty file without a filename.
     if file.filename == '':
         flash('No selected file')
-        return redirect(request.url)
+        return  redirect(url_for('main_page'))
     if file:
         if allowed_file(file.filename):
             # если все ок, то сохраняем файл по директории UPLOAD_FOLDER
@@ -51,7 +51,7 @@ def main_page():
             return redirect('/processed/')
         else:
             flash('This file is not allowed')
-            return redirect('/')
+            return  redirect(url_for('main_page'))
     return redirect(request.url)
 
 @app.route('/wait/', methods=['GET'])
@@ -78,7 +78,7 @@ def move_back():
             os.rmdir(os.path.join(root, name))
     if os.path.isdir.exists(app.config['WORK_DIR']):
         os.rmdir(app.config['WORK_DIR'])
-    return redirect('/')
+    return  redirect(url_for('main_page'))
 
 
 if __name__=='__main__': 
