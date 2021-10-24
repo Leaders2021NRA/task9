@@ -3,7 +3,7 @@ from flask import Flask, request, flash, redirect, render_template, send_file, j
 import os
 import datetime
 
-from .modules.runner import Runner
+from modules.runner import Runner
    
 runner = Runner()
 #ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'doc', 'docx'}
