@@ -78,7 +78,7 @@ def move_back():
             os.rmdir(os.path.join(root, name))
     if os.path.isdir.exists(app.config['WORK_DIR']):
         os.rmdir(app.config['WORK_DIR'])
-    return render_template('initial.html')
+    return redirect('/')
 
 
 if __name__=='__main__': 
