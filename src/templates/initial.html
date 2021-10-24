@@ -394,6 +394,9 @@
           }
      </style> 
      <h2> Удаление персональных данных </h2> 
+      {% for mesg in get_flashed_messages() %}
+      <h3>{{ mesg }}</h3>
+      {% endfor %}
      <div id='forma'> 
 	     <form action="" id="upload-container" method=post enctype=multipart/form-data>
 	          <input id="file-input" type="file" name="file">
