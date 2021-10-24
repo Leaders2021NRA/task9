@@ -51,7 +51,7 @@ def main_page():
             return redirect('/processed/')
         else:
             flash('This file is not allowed')
-            return redirect(request.url)
+            return redirect('/')
     return redirect(request.url)
 
 @app.route('/wait/', methods=['GET'])
