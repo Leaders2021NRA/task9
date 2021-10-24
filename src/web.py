@@ -76,7 +76,8 @@ def move_back():
             os.remove(os.path.join(root, name))
         for name in dirs:
             os.rmdir(os.path.join(root, name))
-    os.rmdir(app.config['WORK_DIR'])
+    if sys.path.exists(app.config['WORK_DIR']):
+        os.rmdir(app.config['WORK_DIR'])
     return render_template('initial.html')
 
 
